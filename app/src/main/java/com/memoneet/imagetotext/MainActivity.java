@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //        Pattern p=Pattern.compile("[0-9][.]?[a-zA-Z0-9]*[:|?][a-zA-Z0-9]*");
         Pattern p=Pattern.compile("[0-9][.]|[0-9][0-9][.]");
         String[] quesNans = p.split(temp);
-        Pattern Split_ques_ans = Pattern.compile("\\([1-4a-dA-D]\\)");
+        Pattern Split_ques_ans = Pattern.compile("\\([1-4a-dA-D]\\)|[1-4].");
 
         for(int j=0; j< quesNans.length;j++){
             if (Split_ques_ans.split(quesNans[j]).length != 1){
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("We are at", Integer.toString(i));
                         Questionlist.add(Question);
                     //}else if(str.equals("(2)") || str.equals("(b)") || str.equals("(B)")){
-                    }else if(str.matches("^\\([2bB]\\)$")){
+                    }else if(str.matches("^\\([2bB]{1,2}\\)$")){
                         OptionA = temp.substring(Option_a_begin,i-1);
                         Option_b_begin = i+3;
                         Log.d("Opt A", OptionA);
