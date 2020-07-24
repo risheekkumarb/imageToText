@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,8 +22,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final Button button = findViewById(R.id.button);
-        final String temp = "91. Which of the following statements is incorrect? (1) Viroids lack a protein coat. (2) Viruses are obligate parasites. (3) Infective constituent in viruses is the protein coat. (4) Prions consist of abnormally folded proteins. Answer (3) Sol. Infective constituent in viruses is either DNA or RNA, not protein. 92. Purines found both in DNA and RNA are (1) Adenine and thymine (2) Adenine and guanine (3) Guanine and cytosine (4) Cytosine and thymine Answer (2) Sol. Purines found both in DNA and RNA are Adenine and guanine 93. Which of the following glucose transporters is insulin-dependent? (1) GLUT I (2) GLUT II (3) GLUT III (4) GLUT IV Answer (4)";
+        List<List<String>> ques_ans = new ArrayList<List<String>>();
+        ArrayList<String> one_ques_ans = new ArrayList<String>();
+        //ArrayList<String> OptionAList = new ArrayList<String>();
+        //ArrayList<String> OptionBList = new ArrayList<String>();
+        //ArrayList<String> OptionCList = new ArrayList<String>();
+        //ArrayList<String> OptionDList = new ArrayList<String>();
+        final String temp = "91. Which of the following statements is incorrect? (1) Viroids lack a protein coat. (2) Viruses are obligate parasites. (3) Infective constituent in viruses is the protein coat. (4) Prions consist of abnormally folded proteins. 92. Purines found both in DNA and RNA are (1) Adenine and thymine (2) Adenine and guanine (3) Guanine and cytosine (4) Cytosine and thymine 93. Which of the following glucose transporters is insulin-dependent? (1) GLUT I (2) GLUT II (3) GLUT III (4) GLUT IV";
+        final String regex = "^(?:(?!\\([A-Z]\\)).*\\R)+(?:\\([A-Z]\\).*\\R*)+";
+//        Pattern p=Pattern.compile("[0-9][.]?[a-zA-Z0-9]*[:|?][a-zA-Z0-9]*");
+        Pattern p=Pattern.compile("[0-9][.]|[0-9][0-9][.]");
+        String[] quesNans = p.split(temp);
+        Pattern Split_ques_ans = Pattern.compile("\\([1-4a-dA-D]\\)");
+
+        for(int j=0; j< quesNans.length;j++){
+            if (Split_ques_ans.split(quesNans[j]).length != 1){
+                String[] temp1= Split_ques_ans.split(quesNans[j]);
+                for(int k=0; k<temp1.length; k++){
+                    one_ques_ans.add(temp1[k]);
+                }
+            }
+            ques_ans.add(one_ques_ans);
+            one_ques_ans.clear();
+        }
+
+        TextView textView = findViewById(R.id.textView2);
+        textView.setText(ques_ans.get(1).get(2));
+
+
+
         Log.d("Number of Charaters", Integer.toString(temp.length()));
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,8 +195,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
-                text2.setText("Q1"+ Questionlist.get(2));
-                text1.setText("Op 1:" + OptionAList.get(2) +"\n" +
+                text1.setText("Q1"+ Questionlist.get(2));
+                text2.setText("Op 1:" + OptionAList.get(2) +"\n" +
                         "Op 2:" + OptionBList.get(2) +"\n" +
                         "Op 3:" + OptionCList.get(2) +"\n" +
                         "Op 4:" + OptionDList.get(2) +"\n");
