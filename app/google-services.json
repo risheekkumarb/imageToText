@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "726502286642",
+    "firebase_url": "https://image-text-8241e.firebaseio.com",
+    "project_id": "image-text-8241e",
+    "storage_bucket": "image-text-8241e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726502286642:android:8718ad959ff1e5e2f5e32b",
+        "android_client_info": {
+          "package_name": "com.memoneet.imagetotext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726502286642-ge5gf2htdcdghue1bp3mb6kfa5fk6i8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAomqfcOg7OKAvRzOpI-hExeuEaJrAMWiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726502286642-ge5gf2htdcdghue1bp3mb6kfa5fk6i8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
